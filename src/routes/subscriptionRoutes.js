@@ -2,12 +2,10 @@ const express = require('express');
 const router = express.Router();
 const checkSubscription = require('../middlewares/checkSubscription');
 const checkJWT = require('../middlewares/checkJWT');
-
 const subscriptionController = require('../controllers/subscriptionController');
-const checkSubscription = require('../middlewares/checkSubscription');
 
 // Créer un abonnement payant
-router.post('/create', checkJWT, checkSubscription, subscriptionController.createSubscription);
+router.post('/create', checkJWT, subscriptionController.createSubscription);
 
 // Webhook Stripe (note: body parser doit être raw, on le gère dans app.js si besoin)
 router.post('/webhook', checkJWT, checkSubscription, express.raw({ type: 'application/json' }), subscriptionController.handleWebhook);

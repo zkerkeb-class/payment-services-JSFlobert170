@@ -12,10 +12,10 @@ const prisma = new PrismaClient({
 // Test de la connexion dès l'importation
 prisma.$connect()
   .then(() => {
-    logger.info('Connecté à la base de données via Prisma');
+    console.log('Connecté à la base de données via Prisma');
   })
   .catch((err) => {
-    logger.error('Erreur de connexion à la base de données', err);
+    console.error('Erreur de connexion à la base de données', err);
 });
 
 module.exports = prisma;
